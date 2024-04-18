@@ -2,7 +2,7 @@
 {% block content %}
 
 <script type="module">
-  const res = await fetch("CarbonApp2024NHH-env.eba-3hpcg3fm.eu-north-1.elasticbeanstalk.com/carbon_interface/cars")
+  const res = await fetch("https://www.carboninterface.com/api/carbon_interface/cars")
 
   const body = await res.json()
 
@@ -32,7 +32,7 @@ body.forEach((element) => {
   const realModel = document.getElementById("model")
 
   const getMake = async (id) => {
-    const resMake = await fetch(`CarbonApp2024NHH-env.eba-3hpcg3fm.eu-north-1.elasticbeanstalk.com/carbon_interface/models/${id}`)
+    const resMake = await fetch(`https://www.carboninterface.com/api/carbon_interface/models/${id}`)
     const makeBody = resMake.json()
 
     return makeBody
