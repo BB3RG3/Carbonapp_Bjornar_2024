@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <!-- Header -->
+    <section class="section_header_carbon_calc">
+        <div class="container">
+    
+        <div class="header_carbon_calc">
+            <div class="box"> 
+                <h1 class="page-title">Carbon Calculator</h1>
+            <p style="text-align:left;">
+               To calculate the total emissions produced, users are required to input their details regarding the type of vehicle, fuel and distance traveled. The carbon calculator will then automatically calculate the total emissions produced.
+            <div class="container_buttons">
+                <div class="btn">
+                    <a href="{{url_for('methodology.methodology_home')}}" class="btn_header">Methodology</a>
+                </div>
+                <div class="btn">
+                    <a href="#" class="btn_header", data-toggle="modal" data-target="#carbon_calc_instructions">Instructions</a>
+                </div>
+                <div class="btn">
+                    <a href="{{url_for('carbon_calc.your_data')}}" class="btn_header">Your emissions</a>
+                </div>
+            </div>  
+            <!-- Modal Instructions -->
+            <div class="modal fade" id="carbon_calc_instructions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+          
+                    <div class="modal-header">
+                    <h5 class="modal-title", style="color:black; text-align: center;">Carbon calculator: instructions</h5>
+                    </div>
+          
+                    <div class="modal-body", style="color:black">
+                    <p style="text-align: left;">
+                        To add in the emissions, there are only two simple steps:
+                    </p>
+                    <ol style="text-align:left;">
+                        <li>
+                            Choose the type of vehicle and fuel used
+                        </li>
+                        <li>
+                            Add in the total distance travelled using that vehicle
+                        </li>
+                    </ol>
+                    <p style="text-align: left;">
+                        You can add as many entries as you'd like. To get an overview of your carbon emissions, go to the "Your emissions"-page. Good luck!
+                    </p>
+                    </div>
+          
+                    <div class="modal-footer">
+                    <button class="btn btn_close" data-dismiss="modal">Close</button>
+                    </div>
+          
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="header-wave">
+            <svg class="header-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+              <path class="header-wave-path" d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z"></path>
+            </svg>
+          </div>
+    </section>
+    <section class="section_padding">
+        <h1 class="main-intro-text">Please select a mode of transportation:</h1>
+
+        <div class="transport-selection-container">
+            <a class="transport-item" href="{{url_for('carbon_calc.new_entry_car')}}">
+                <div class="transport-img-container">
+                    <img src="/static/icons/transport-icons/car.avif">
+                </div>
+                <div class="transport-item-title">
+                    <h3>Car</h3>
+                </div>
+            </a>
+            <a class="transport-item" href="{{url_for('carbon_calc.new_entry_bus')}}">
+                <div class="transport-img-container">
+                    <img src="https://i.postimg.cc/XYRKq6yw/bus.jpg">
+                </div>
+                <div class="transport-item-title">
+                    <h3>Bus</h3>
+                </div>
+            </a>
+            <a class="transport-item" href="{{url_for('carbon_calc.new_entry_plane')}}">
+                <div class="transport-img-container">
+                    <img src="https://i.postimg.cc/zfNyRttb/airplane-background.jpg">
+                </div>
+                <div class="transport-item-title">
+                    <h3>Airplane</h3>
+                </div>
+            </a>
+            <a class="transport-item" href="{{url_for('carbon_calc.new_entry_ferry')}}">
+                <div class="transport-img-container">
+                    <img src="https://i.postimg.cc/ZRTwYz1w/ferry.webp">
+                </div>
+                <div class="transport-item-title">
+                    <h3>Ferry</h3>
+                </div>
+            </a>
+            <a class="transport-item" href="{{url_for('carbon_calc.new_entry_walk')}}">
+                <div class="transport-img-container">
+                    <img src="https://i.postimg.cc/SR4Ybm3K/walk.jpg">
+                </div>
+                <div class="transport-item-title">
+                    <h3>Walking</h3>
+                </div>
+            </a>
+            <a class="transport-item" href="{{url_for('carbon_calc.new_entry_bicycle')}}">
+                <div class="transport-img-container">
+                    <img src="https://i.postimg.cc/P5pzd5NX/bike.jpg">
+                </div>
+                <div class="transport-item-title">
+                    <h3>Bike</h3>
+                </div>
+            </a>
+            <a class="transport-item" href="{{url_for('carbon_calc.new_entry_train')}}">
+                <div class="transport-img-container">
+                    <img src="https://i.postimg.cc/pT22JyFR/train.jpg">
+                </div>
+                <div class="transport-item-title">
+                    <h3>Train</h3>
+                </div>
+            </a>
+            <a class="transport-item" href="{{url_for('carbon_calc.new_entry_motorbike')}}">
+                <div class="transport-img-container">
+                    <img src="https://i.postimg.cc/jdj3RjXh/motorbike.jpg">
+                </div>
+                <div class="transport-item-title">
+                    <h3>Motorbike</h3>
+                </div>
+            </a>
+        </div>
+    </section>
+
+
+{% endblock content %}

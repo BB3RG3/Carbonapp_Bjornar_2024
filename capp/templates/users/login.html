@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section class="section_header_forms">
+  <div class="container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="custom-flash-message" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+    <div class="header_forms">
+      <div class="box">
+        <form method="POST" action="">
+          {{ form.hidden_tag() }}
+          <fieldset class="form-group">
+            <h1 class="page-title">Log in to Move Green™</h1>
+            <div class="form-group">
+              {{ form.email.label(class="form-control-label") }}
+              {% if form.email.errors %}
+                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.email(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              {{ form.password.label(class="form-control-label") }}
+              {% if form.password.errors %}
+                {{ form.password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {{ form.password(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <div class="form-check">
+              {{ form.remember(class="form-check-input") }}
+              {{ form.remember.label(class="form-check-label") }}
+            </div>
+          </fieldset>
+          <div class="form-group">
+            {{ form.submit(class="container_buttons btn btn_header") }}
+          </div>
+        </form>
+        <p>Need An Account?<a href="{{ url_for('users.register') }}"> Register</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="header-wave">
+    <svg class="header-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+      <path class="header-wave-path" d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- New section to "fill" the empty space (down to the footer)-->
+<section class="section_padding"></section>
+
+{% endblock content %}

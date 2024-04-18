@@ -1,0 +1,239 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Header -->
+<section class="section_header_carbon_calc">
+    <div class="container">
+        <div class="header_carbon_calc">
+            <div class="box"> 
+                <h1 class="page-title">Your emissions</h1>
+                <p>
+                    Here are your carbon emissions (in kg) based on your entries in the carbon calculator!
+                </p>
+                <div class="container_buttons">
+                    <a href="{{ url_for('carbon_calc.carbon_calc_home') }}" class="btn btn_header">New Entry</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-wave">
+        <svg class="header-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+            <path class="header-wave-path" d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z"></path>
+        </svg>
+    </div>
+</section>
+
+     <!-- Table Section -->
+    <section class="section_padding">
+     <section class="table_main">
+        <div class="container">
+            </br>
+            <div class="box">
+            </div>
+            <div class="box">  
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div> 
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}         
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">User</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Kilometres</th>
+                            <th scope="col">Transport</th>
+                            <th scope="col">Fuel</th>
+                            <th scope="col">Co2</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in entries %}
+                            <tr>
+                                <th scope="row">{{ current_user.username }}</th>
+                                <td>{{ entry.date.strftime("%m-%d-%Y") }}</td>
+                                <td>{{ entry.kms }}</td>
+                                <td>{{ entry.transport }}</td>
+                                <td>{{ entry.fuel }}</td>
+                                <td>{{ entry.co2 }}</td>
+                                <td><a href="{{ url_for('carbon_calc.delete_emission', entry_id = entry.id) }}" class="btn btn_delete">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>       
+            </div>
+            <div class="box">
+    
+            </div>
+        </div>
+        </section> 
+
+    <!-- Two Emissions Graph Section -->
+    <section class="two_emissions_graphs">
+        <div class="container" >
+            <div class="box">
+                <canvas id="emissions_by_transport"></canvas>
+            </div>
+            <div class="box">
+                <canvas id="over_time_emissions"></canvas> 
+            </div>
+        </div>
+    </section> 
+
+    <!-- Two Emissions Graph Section -->
+    <section class="two_emissions_graphs">
+        <div class="container" >
+            <div class="box">
+                <canvas id="kms_by_transport"></canvas>
+            </div>
+            <div class="box">
+                <canvas id="over_time_kms"></canvas>
+            </div>
+        </div>
+    </section> 
+</section>
+
+
+
+{% block javascript %}
+    <script>
+        // Emissions
+        let emission_transport_data = JSON.parse({{ emissions_by_transport | tojson }})  
+        Chart.scaleService.updateScaleDefaults('linear', {
+                ticks: {
+                    min: 0
+                }
+        });
+    
+    
+        let emissions_by_transport_chart = new Chart(emissions_by_transport, {
+                type: 'pie',
+                data: {
+                labels: ['Bus', 'Car', 'Specific Car', 'Ferry', 'Motorbike','Plane', 'Train'],
+                    datasets: [{
+                        data: emission_transport_data,
+                        backgroundColor: ['#005F73', '#0A9396', '#94D2BD', '#E9D8A6',
+                            '#EE9B00', '#CA6702', '#BB3E03'],
+    
+                        borderWidth: 1,
+                        hoverBorderColor: "black",
+                        hoverBorderWidth: 2,
+                        hoverBackgroundColor: 'rgba(100, 100, 100)',
+                        pointHoverRadius: 5
+                    }],
+                },
+                options: {
+                        title: {
+                            display: true,
+                                text: "Emissions by type of transport (5 last days)",
+                                    fontColor: "black",
+                                    fontSize: 20,
+                        },
+                        legend: {
+                            position: "right",
+                                labels: {
+                                fontColor: "black"
+                            },
+                            display: true,
+                        },
+    
+                        elements: {
+                            hitRadius: 3,
+                        }
+                }
+            })
+
+        over_time_emissions = JSON.parse({{over_time_emissions | tojson}})
+        labels = JSON.parse({{ dates_label  | tojson}})
+
+        new Chart(document.getElementById("over_time_emissions"), {
+                type: "line",
+                data:
+                {
+                    labels: labels,
+                    datasets: [
+                        {
+                        label: "Individual Emissions (5 past days)",                           
+                        data: over_time_emissions,
+                        fill: false,
+                        borderColor: '#BB3E03',
+                        lineTension: 0.1
+                        }
+                ]
+                },                    
+                options: {}
+            });  
+            
+        // Kilometers
+        let kms_transport_data = JSON.parse({{ kms_by_transport | tojson }})    
+        Chart.scaleService.updateScaleDefaults('linear', {
+                ticks: {
+                    min: 0
+                }
+        });
+        let kms_by_transport_chart = new Chart(kms_by_transport, {
+                type: 'pie',
+                data: {
+                labels: ['Bicycle', 'Bus', 'Car', 'Specific Car', 'Ferry','Motorbike', 'Plane','Train', 'Walk'],
+                    datasets: [{
+                        label: "Income Vs Expenses",
+                        data: kms_transport_data,
+                        backgroundColor: ['#001219', '#005F73', '#0A9396', '#94D2BD', '#E9D8A6', '#EE9B00',
+                            '#CA6702', '#BB3E03', '#AE2012', '#9B2226' ],    
+                        borderWidth: 1,
+                        hoverBorderColor: "black",
+                        hoverBorderWidth: 2,
+                        hoverBackgroundColor: 'rgba(100, 100, 100)',
+                        pointHoverRadius: 5
+                    }],
+                },
+                options: {
+                        title: {
+                            display: true,
+                                text: "Kilometers by type of transport (5 last days)",
+                                fontColor: "black",
+                                fontSize: 20,
+                        },
+                        legend: {
+                            position: "right",
+                                labels: {
+                                fontColor: "black"
+                            },
+                            display: true,
+                        },
+    
+                        elements: {
+                            hitRadius: 3,
+                        }
+                }
+            })
+            
+        over_time_kms = JSON.parse({{over_time_kms | tojson}})
+        labels = JSON.parse({{ dates_label  | tojson}})
+
+        new Chart(document.getElementById("over_time_kms"), {
+                type: "line",
+                data:
+                {
+                    labels: labels,
+                    datasets: [
+                        {
+                        label: "Individual Kilometers (5 past days)",                            
+                        data: over_time_kms,
+                        fill: false,
+                        borderColor: '#005F73',
+                        lineTension: 0.1
+                        }
+                ]
+                },                    
+                options: {}
+            });   
+
+        </script>
+    {% endblock%}        
+{% endblock content %}

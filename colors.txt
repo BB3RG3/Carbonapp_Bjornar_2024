@@ -1,0 +1,23 @@
+navigation bar:
+mørkish grønn
+#6c8c75;
+
+home backgound:
+lysere grønn
+#90a897
+
+backgound dev.:
+lys beige
+#d8cdc3
+
+BOX dev. backgound:
+brun
+#968a7f
+
+button dev background:
+mørk brun
+#695747
+
+title / logo:
+mørk grønn
+#314736

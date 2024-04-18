@@ -1,0 +1,315 @@
+/* New font */
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans&display=swap');
+
+
+/* CSS utilities */
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: 'Albert Sans', sans-serif;
+  background: #fff;
+  line-height: 1.6;
+}
+.container {
+  margin: auto;
+  max-width: 1320px;
+  width: 100%;
+
+}
+ul { 
+  /* list-style: none; */
+  text-align: left;
+  font-size: 400;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+h1, h2 {
+  font-weight: 400;
+  line-height: 1.2;
+}
+p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+/* Pushing the footer to the bottom when the page is too small */
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background: #d8cdc3;
+}
+.section_padding {
+  flex-grow: 1;
+  background-color: #d8cdc3;
+}
+
+/* Navigation bar */
+.section_carbon_calc_navbar {
+  background-color: #90a897;
+}
+.carbon_calc_navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  padding: 0 12px;
+}
+.carbon_calc_navbar a {
+  color: #314736;
+  padding: 15px 30px 15px; /* Adjust padding as needed */
+  font-size: 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.carbon_calc_navbar a i {
+  margin-right: 8px;
+}
+.carbon_calc_navbar a:hover{
+  color: #d8cdc3;
+}
+.carbon_calc_navbar ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Logo in navigation bar */
+.carbon_calc_navbar .logo {
+  font-weight: bold;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+.carbon_calc_navbar .logo a i {
+  margin-right: 0;
+}
+.text-logo {
+  color: #314736;
+}
+/* Style formatting: make the logo clickable (back to home-page) */
+.carbon_calc_navbar a.logo-link {
+  background-color: transparent;
+  border-bottom: none;
+  padding: 0;
+}
+
+/* Footer wave pattern */
+.footer-wave {
+  background-color: #aa9d90;
+  color: #fff;
+}
+.footer-wave-svg {
+  background-color: transparent;
+  display: block;
+  height: 30px;
+  position: relative;
+  top: -1px;
+  width: 100%;
+}
+.footer-wave-path {
+  fill: #d8cdc3;
+}
+.section_footer{
+  background-color: #aa9d90;
+  width: 100%;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+.footer p {
+  color: #fff;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+/* Footer links ("menu") */
+.social-icon,
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+.menu__item {
+  list-style: none;
+  margin-right: 25px;
+}
+
+.menu__link {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 300;
+}
+.menu__link:hover {
+  color: #695747;
+}
+.social-icon__item {
+  list-style: none;
+  font-size: 2rem;
+  margin: 0 10px;
+  display: inline-block;
+}
+.social-icon__item a {
+  color: #fff; 
+  transition: 0.5s;
+}
+.social-icon__item a:hover {
+  color: #695747;
+}
+
+/* Title text on every page */
+.page-title{
+  font-size: 50px;
+  text-align: start;
+  color: #314736;
+}
+
+.main-intro-text,
+.main-extra-text{
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+/* Buttons for headers on every page */
+.section_container_buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0px 0px;
+  margin: 0px 0px;
+}
+
+.container_buttons{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.btn{
+  padding: 0px;
+  line-height: 1; /*fixes button height bug on login*/
+}
+
+.btn_header {
+  padding: 10px 10px;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 22px;
+  background-color: #314736;
+}
+.btn_header:hover {
+  background-color: #4b6551;
+  color: #d8cdc3;
+  text-decoration: none;
+}
+
+.btn_delete {
+  padding: 5px 5px;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 15px;
+  background-color: #914444;
+}
+.btn_delete:hover {
+  background-color: #982323;
+  color: #d8cdc3;
+  text-decoration: none;
+}
+
+.btn_close {
+  padding: 5px 5px;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 18px;
+  background-color: #695747;
+}
+.btn_close:hover {
+  background-color: #897768;
+  color: #d8cdc3;
+  text-decoration: none;
+}
+
+/* Media query */
+@media(max-width:768px){
+  .carbon_calc_navbar {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  .carbon_calc_navbar .logo {
+    padding: 10px 15px; 
+    margin: 2px 0;
+  }
+  .carbon_calc_navbar a {
+    font-size: 14px;
+    padding: 10px 15px;
+    margin: 2px 0;
+    display: block;
+  }
+  .carbon_calc_navbar ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%; 
+    align-items: center;
+  }
+  .carbon_calc_navbar a:hover {
+    color: #568c63;
+    background-color: #d8cdc3;
+    border-radius: 4px;
+  }
+}
+
+/* CSS For New Entries in Carbon Calc */
+.new_entry{
+  background-color: #d8cdc3;
+  display: flex;
+}
+
+.box{
+ display: flex;
+ padding: 10px 15%;
+ flex-direction: column;
+ align-items: space-around;
+ text-align: center;
+}
+
+.box ol{
+  margin: 0 auto;
+}
+

@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+{% block content %}
+  
+<!-- Header -->
+<section class="section_header_methodology">
+  <div class="container">
+    <div class="header">
+      <div class="box"> 
+        <h1 class="page-title">Methodology</h1>
+        <p style="text-align:left;">
+          Our methodology is based on collecting real data on carbon emissions. To better aid our users in making informed decisions about their travel choices, we developed an application that will help calculate carbon emissions produced from their transportation choices. We will be using a carbon footprint analysis in order to find the necessary data and statistics to calculate the emissions. By default, there will be six options for the users to choose from - <b>Bus, Car, Motorbike, Air Travel, Train, Ferry</b> and <b>Bicycle</b>. Users will also be asked to choose what type of vehicle it is for eg. petrol, diesel, hybrid, hydrogen and electric, and the amount of kilometres travelled using that vehicle. Using the information provided, the carbon emissions will be calculated using the formula in the carbon calculator.
+        </p>
+        <div class="container_buttons">
+          <div class="btn">
+            <a href="https://docs.google.com/document/d/1NBELAQSL_azImPhwssoit1vL-T7lO7mRs2SGOCa32ng/edit?usp=sharing" class="btn_header" target=”_blank”>Paper</a>
+          </div>
+          <div class="btn">
+            <a href="{{ url_for('carbon_calc.carbon_calc_home') }}" class="btn_header">Carbon Calculator</a>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+  <div class="header-wave">
+    <svg class="header-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+      <path class="header-wave-path" d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z"></path>
+    </svg>
+  </div>
+</section> 
+
+<!-- Methodology -->
+<section class="section_body_methodology">
+  <div class="container">
+    <div class="methodology" style="display:block;">
+      <h1 class="main-intro-text">Calculations</h1>
+      <p class="main-extra-text">
+        To calculate the total carbon emissions produced, we factor in the transport emissions produced per passenger per kilometre for each respective vehicle used multiplied by the total kilometres travelled:
+      </p>
+      <div class="formula" style="height:80px;">
+        <p class="main-extra-text">
+          <b>\( \text{CO}_2 \) * km = total carbon emissions</b>
+        </p>                       
+      </div>
+    </div>
+
+    <div class="methodology"> 
+      <div class="box_table2" style="height:340px;">
+        <ol start="1">
+          <li>
+            <h4>Cars: fuel types and emissions in kg</h4>
+            <ul style="text-align:left;">
+              <li>Gasoline: <mark>0.0384</mark></li>
+              <li>Diesel: <mark>0.0342</mark></li>
+              <li>Hybrid: <mark>0.0298</mark></li>
+              <li>Electric: <mark>0.0106</mark></li>
+              <li>Hydrogen: <mark>0</mark>*</li>
+            </ul>
+            <p><i><small>*although they do not produce any emissions other than water, hydrogen gas, when leaked into the atmosphere, has a Global Warming Potential of around 11, compared to CO2 which has a GWP of 1.</small></i></p>
+          </li>
+        </ol>
+      </div>
+      <div class="box_table2" style="height:340px;">
+        <ol start="2">
+          <li>
+            <h4>Motorbike: engine size and emissions in kg</h4>
+            <ul style="text-align:left;">
+              <li>≤ 125cc: <mark>0.0415</mark></li>
+              <li>125cc to 500cc: <mark>0.0505</mark></li>
+              <li>> 500cc: <mark>0.0665</mark></li>
+            </ul>
+            <p>The greater the engine size, the more carbon emissions is produced.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="methodology">
+        <div class="box_table2" style="height:340px;">
+          <ol start="3">
+            <li>
+              <h4>Bus: fuel types and emissions in kg</h4>
+              <ul style="text-align:left;">
+                <li>Diesel: <mark>0.105</mark></li>
+                <li>Hybrid: <mark>0.054</mark></li>
+                <li>Electric: <mark>0.02052</mark></li>
+              </ul>
+              <p>We are assuming that it is a typical urban bus which carries approximately 70 passengers each time.</p>
+            </li>
+          </ol>                        
+        </div>
+        <div class="box_table2" style="height:340px;">
+          <ol start="5">
+            <li>
+              <h4>Train: fuel types and emissions in kg</h4>
+              <ul style="text-align:left;">
+                <li>Diesel: <mark>0.091</mark></li>
+                <li>Electric (Nordic): <mark>0.024</mark></li>
+                <li>Electric (EU): <mark>0.007</mark></li>
+              </ul>
+              <p>The Nordic standard differentiates from the EU standard since energy production in the Nordic countries is much greener, with a higher percent of the produced energy coming from renewable resources.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="methodology">
+        <div class="box_table2" style="height:340px;">
+          <ol start="5">
+            <li>
+              <h4>Ferry: speed and emissions in kg</h4>
+              <ul style="text-align:left;">
+                <li>Regular: <mark>0.091</mark></li>
+                <li>High speed: <mark>0.024</mark></li>
+                <li>Electric (EU): <mark>0.007</mark></li>
+              </ul>
+              <p>Regular ferries are those within the country whereas high-speed ferries are those who travel across countries. For all ferries, we are assuming that each ferry holds an average of 309 passengers.</p>
+            </li>
+          </ol>                        
+        </div>
+        <div class="box_table2" style="height:340px;">
+          <ol start="6">
+            <li>
+              <h4>Air Travel: flight type and emissions in kg</h4>
+              <ul style="text-align:left;">
+                <li>Domestic: <mark>0.224</mark></li>
+                <li>Short haul: <mark>0.15 - 0.225</mark></li>
+                <li>Long haul: <mark>0.147 - 0.558</mark></li>
+                <li>International: <mark>0.14 - 0.56</mark></li>
+              </ul>
+              <p>The different types of classes will affect these calculations: Economy class, Premium economy, Business class, and First Class.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="methodology">
+        <div class="box_table2" style="height:100px;">
+          <ol start="7">
+            <li>
+              <h4>Bicycle</h4>
+              <ul style="text-align:left;">
+                <p>No carbon emissions are being produced for bicycles.</p>
+              </ul>
+            </li>
+          </ol>                        
+        </div>
+        <div class="box_table2" style="height:100px;">
+          <ol start="8">
+            <li>
+              <h4>By foot</h4>
+              <ul style="text-align:left;">
+                <p>No carbon emissions are being produced for walking.</p>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+  </div>
+</section>
+
+{% endblock content %}

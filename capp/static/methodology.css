@@ -1,0 +1,125 @@
+/* Utilities  */
+p {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  h4 {
+    font-size: 18px;
+    text-align: left;
+    font-weight: bold;
+  }
+  ol {
+    font-size: 18px;
+  }
+  li {
+    padding: 3px;
+  }
+  mark {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #d8cdc3;
+    background-color: #695747;
+    border-radius: 5px;
+  }
+  /* Section header */
+  .section_header_methodology {
+    background-color:#90a897;
+  }
+  .header {
+    display: flex;  
+    align-items: start;
+    background: #90a897;
+  }
+  .header .box {
+    flex: 1;
+    background: #90a897;
+    color: #fff;
+    border-radius: 10px;
+    margin: 20px 10px 20px 0px;
+    padding: 15px 12px;
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+  }
+  .header .box:nth-of-type(1) {
+    flex-grow:2;
+  }
+  .header .box:nth-of-type(2) {
+    flex-grow:1;
+  }
+
+  /* Section methodology */
+  .section_body_methodology {
+    background-color:#d8cdc3;
+    padding: 60px 0px;
+  }
+  .methodology {
+    display: flex;  
+    align-items: start;
+    background: #d8cdc3;
+  }
+  .methodology .formula {
+    flex: 1;
+    background: #90a897;
+    color: #314736;
+    border-radius: 10px;
+    margin: 10px 10px 10px 10px;
+    padding: 15px 15px;
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Table with one column */
+  .methodology .box_table1 {
+    flex: 1;
+    background: #968a7f;
+    color: #fff;
+    border-radius: 10px;
+    margin: 10px 10px 10px 10px;
+    padding: 15px 15px;
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+  }
+  .methodology .box_table1:nth-of-type(1) {
+    flex-grow:1;
+    background: #d8cdc3;
+  }
+  .methodology .box_table1:nth-of-type(2) {
+    flex-grow:4;
+  }
+  .methodology .box_table1:nth-of-type(3) {
+    flex-grow:1;
+    background: #d8cdc3;
+  }
+  /* Table with two columns */
+  .methodology .box_table2 {
+    flex: 1;
+    background-image: linear-gradient(#968a7f, #6957478d);
+    color: #fff;
+    border-radius: 10px;
+    margin: 10px 10px 10px 10px;
+    padding: 15px 15px;
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+  }
+  .methodology .box_table2:nth-of-type(1) {
+    flex-grow:1;
+    background: #968a7f;
+  }
+  .methodology .box_table2:nth-of-type(2) {
+    flex-grow:1;
+    background: #968a7f;
+  }
+  
+  @media (max-width:768px) { 
+    .header {
+      flex-direction: column;
+    } 
+    .methodology {
+      flex-direction: column;
+    } 
+  }
+

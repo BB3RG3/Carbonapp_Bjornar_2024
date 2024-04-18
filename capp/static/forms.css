@@ -1,0 +1,87 @@
+/* CSS-file for the pages containing a login-form and a register-form */
+
+/* Styling for labels */
+.header_forms label {
+  margin: 2px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+/* Align checkbox and label */
+.form-check .form-check-input {
+  margin-top: 0; 
+  margin-bottom: 0;
+}
+.form-check .form-check-label {
+  line-height: 20px;
+  margin-left: 5px;
+}
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* Checkbox */
+.form-check-input:checked {
+  background-color: #695747;
+  border-color: #695747;
+}
+
+/* Input fields */
+.form-control {
+  background-color: #90a897;
+  border: 3px solid #314736;
+}
+.form-control:focus {
+  background-color: #b3cdbb;
+  border: 3px solid #b3cdbb;
+}
+
+/* Section header */
+.section_header_forms {
+  background-color:#90a897;
+}
+.header_forms {
+  display: flex;  
+  align-items: start;
+  background: #90a897;
+}
+.header_forms .box {
+  flex: 1;
+  background: #90a897;
+  color: #fff;
+  border-radius: 10px;
+  margin: 20px 10px 20px 0px;
+  padding: 15px 12px;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+}
+.header_forms .box:nth-of-type(1) {
+  flex-grow:2;
+}
+.header_forms .box:nth-of-type(2) {
+  flex-grow:1;
+}
+
+/* Section to fill the screen */
+.section_padding {
+  background-color:#d8cdc3;
+  padding: 60px 0px;
+}
+
+@media (max-width:768px) { 
+  .header_forms {
+    flex-direction: column;
+  } 
+}
+
+.btn_carbon_app_new_entry_main{
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 22px;
+  background-color: #586e5f;
+}

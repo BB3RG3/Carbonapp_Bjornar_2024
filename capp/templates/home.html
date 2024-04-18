@@ -1,0 +1,244 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Header -->
+<section class="section_header_home">
+  <div class="container">
+    <!-- Message on screen if a user has logged in -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="custom-flash-message" role="alert">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <div class="header_home">
+      <div class="box">
+        <h1 class="page-title">Welcome to <b>Move Green™</b></h1>
+        <p style="text-align:left;">
+          We developed this app to help you reduce your carbon footprint by providing you with an easy way to calculate
+          your carbon emissions. Our app is user-friendly, and it gives you an overview of your carbon footprint based
+          on the data you input. By using our app, you can gain a better understanding of what affects your carbon
+          footprint and what you can do to reduce it! We hope that our app can help you make the right choices to reduce
+          your carbon footprint and contribute to combating climate change. Thank you for using our app!
+        </p>
+        <div class="container_buttons">
+          <div class="btn">
+            <a href="{{url_for('users.register')}}" class="btn_header">Register</a>
+          </div>
+          <div class="btn">
+            <a href="{{url_for('users.login')}}" class="btn_header">Login</a>
+          </div>
+        </div>
+      </div>
+      <div class="img-box">
+        <img src="{{url_for('static', filename='icons/bikes.png')}}" alt="two people riding a bicycle" />
+      </div>
+    </div>
+  </div>
+  <div class="header-wave">
+    <svg class="header-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+      <path class="header-wave-path" d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section_developers">
+  <div class="container">
+    <h1 class="main-intro-text">Our purpose</h1>
+    <p class="main-extra-text">
+      Greenhouse gases can be attributed to being the main driver of climate change.
+      While nature naturally emits a significant portion of greenhouse gases,
+      human activities have been increasing the concentration of these greenhouse gases,
+      hastening the rate of climate change. Among the different greenhouse gases,
+      the largest contributor produced by human activities are carbon dioxide emissions.
+      Carbon emissions also contribute to air pollution, resulting in respiratory problems and other health issues.
+      <b>Hence, it is paramount that we seek to reduce our carbon emissions.</b> And we are not alone in this mission:
+    </p>
+    <div class="box-items2">
+      <div class="img-container2">
+        <a href="https://sdgs.un.org/goals/goal7">
+          <img src="/static/icons/un7.png" alt="UN sustainable development goal #7">
+        </a>
+      </div>
+      <div class="img-container2">
+        <a href="https://sdgs.un.org/goals/goal11">
+          <img src="/static/icons/un11.png" alt="UN sustainable development goal #11">
+        </a>
+      </div>
+      <div class="img-container2">
+        <a href="https://sdgs.un.org/goals/goal13">
+          <img src="/static/icons/un13.png" alt="UN sustainable development goal #13">
+        </a>
+      </div>
+    </div>
+
+    <!-- Developer section -->
+    <div class="developers" style="display:block;">
+      <h1 class="main-intro-text">Get to know our team!</h1>
+      <p class="main-extra-text">
+        Our team of developers is deeply committed to developing a solution that will promote sustainable practices and
+        encourage both individuals and businesses to make environmentally friendly choices in their daily lives. We
+        recognize the pressing need for action to address the challenges facing our planet, and we believe that our
+        application can be a catalyst for positive change.
+      </p>
+    </div>
+    <div class="developers">
+      <!-- Developer section 1 -->
+      <div class="box">
+        <div class="box-items">
+          <div class="img-container">
+            <img src="/static/icons/developers/jasmine.jpg" alt="portrait of Jasmine">
+          </div>
+          <h3>Jasmine Næss</h3>
+          <ul>
+            <li>23 years old from Jessheim</li>
+            <li>First year student at the Norwegian School of Economics (NHH)</li>
+            <li>Third year computer science-student at the University of Bergen</li>
+          </ul>
+        </div>
+        <div class="section_container_buttons_developers">
+          <a class="btn_developers" href="https://www.linkedin.com/in/jasmineathea/" target="_blank">LinkedIn</a>
+          <a class="btn_developers" href="https://github.com/jasmineathea" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <!-- Developer section 2 -->
+      <div class="box">
+        <div class="box-items">
+          <div class="img-container">
+            <img src="/static/icons/developers/Bjørnar.jpeg" alt="portrait of Bjørnar">
+          </div>
+          <h3>Bjørnar Berge</h3>
+          <ul>
+            <li>20 years old from Ålesund</li>
+            <li>Second year student at the Norwegian School of Economics (NHH)</li>
+            <li>On-site project leader for a summer project by Redningsselskapet and Ålesunds svømmeklubb
+            </li>
+          </ul>
+        </div>
+        <div class="section_container_buttons_developers">
+          <a class="btn_developers" href="www.linkedin.com/in/bjørnar-berge" target="_blank">LinkedIn</a>
+          <a class="btn_developers" href="https://github.com/BB3RG3" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <!-- Developer section 3 -->
+      <div class="box">
+        <div class="box-items">
+          <div class="img-container">
+            <img src="/static/icons/developers/Daniel.jpg" alt="portrait of Daniel">
+          </div>
+          <h3>Daniel Hu Øren</h3>
+          <ul>
+            <li>23 years old from Bergen</li>
+            <li>Final year student at the Norwegian School of Economics and second year IT and Economics study at University of Bergen</li>
+            <li>Intern at Deloitte Bergen Office</li>
+          </ul>
+        </div>
+        <div class="section_container_buttons_developers">
+          <a class="btn_developers" href="https://www.linkedin.com/in/daniel-%C3%B8ren-3a133123a/" target="_blank">LinkedIn</a>
+          <a class="btn_developers" href="https://github.com/danielorh" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <!-- Developer section 4 -->
+      <div class="box">
+        <div class="box-items">
+          <div class="img-container">
+            <img src="/static/icons/developers/Herman.jpeg" alt="portrait of Herman">
+          </div>
+          <h3>Herman Wilter</h3>
+          <ul>
+            <li>21 years old from Langhus</li>
+            <li>First year at the Norwegian School of Economics (NHH)</li>
+            <li>Plan B is to rejoin the military</li>
+          </ul>
+        </div>
+        <div class="section_container_buttons_developers">
+          <a class="btn_developers" href="https://www.linkedin.com/in/herman-nordheim-wilter-2485402b4" target="_blank">LinkedIn</a>
+          <a class="btn_developers" href="https://github.com/hermanwilter" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <!-- Developer section 5 -->
+      <div class="box">
+        <div class="box-items">
+          <div class="img-container">
+            <img src="/static/icons/developers/adoncia.jpg" alt="portrait of Adoncia">
+          </div>
+          <h3>Adoncia Tan</h3>
+          <ul>
+            <li>21 years old from Singapore</li>
+            <li>Third year economics student at the Singapore Management University (SMU)</li>
+            <li>Loves going to museums</li>
+          </ul>
+        </div>
+        <div class="section_container_buttons_developers">
+          <a class="btn_developers" href="https://www.linkedin.com/in/adonciatan/" target="_blank">LinkedIn</a>
+          <a class="btn_developers" href="https://github.com/adonciatan" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <!-- Developer section 6 -->
+      <div class="box">
+        <div class="box-items">
+          <div class="img-container">
+            <img src="static/icons/developers/Andreas.PNG" alt="portrait of Andreas">
+          </div>
+          <h3>Andreas Caniaris</h3>
+          <ul>
+            <li>20 years old from Athens, Greece</li>
+            <li>First year student at the Norwegian School of Economics (NHH)</li>
+            <li>Passionate about AI, team work and a sustainable future </li>
+          </ul>
+        </div>
+        <div class="section_container_buttons_developers">
+          <a class="btn_developers" href="https://www.linkedin.com/in/andreas-caniaris-3b0838204/"
+            target="_blank">LinkedIn</a>
+          <a class="btn_developers" href="https://github.com/andreas-can" target="_blank">GitHub</a>
+        </div>
+
+      </div>
+      <!-- Developer section 7 --> 
+      <div class="box">
+        <div class="box-items">
+          <div class="img-container">
+            <img src="/static/icons/developers/Klara.jpg" alt="portrait of Klara">
+          </div>
+          <h3>Klara Evelina Palkint</h3>
+          <ul>
+            <li>23 years old from Lomma, Sweden</li>
+            <li>Third year student at the Norwegian School of Economics (NHH)</li>
+            <li>Exchange student from Lund University School of Economics and Management</li>
+          </ul>
+        </div>
+        <div class="section_container_buttons_developers">
+          <a class="btn_developers" href="https://linkedin.com/in/klara-palklint-81005a23a" target="_blank">LinkedIn</a>
+          <a class="btn_developers" href="https://github.com/klarapalklint" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <!-- Developer section 8 -->
+      <div class="box">
+        <div class="box-items">
+          <div class="img-container">
+            <img src="/static/icons/developers/britney.jpg" alt="portrait of Britney">
+          </div>
+          <h3>Britney Charles</h3>
+          <ul>
+            <li>22 years old from Singapore</li>
+            <li>Exchange student from Singapore Management University</li>
+            <li>Currently a penultimate economics student who LOVES hiking and doing adventure sports!</li>
+          </ul>
+        </div>
+        <div class="section_container_buttons_developers">
+          <a class="btn_developers" href="https://www.linkedin.com/in/britney-c-040526202/" target="_blank">LinkedIn</a>
+          <a class="btn_developers" href="" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  </div>
+</section>
+
+{% endblock content %}

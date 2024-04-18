@@ -1,0 +1,167 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<script type="module">
+  const res = await fetch("http://127.0.0.1:5000/carbon_interface/cars")
+
+  const body = await res.json()
+
+  // find form-group with id cars
+  const cars = document.getElementById("cars")
+
+  body.sort((a, b) => {
+    if (a.data.attributes.name < b.data.attributes.name) {
+      return -1
+    }
+    if (a.data.attributes.name > b.data.attributes.name) {
+      return 1
+    }
+    return 0
+  })
+
+// Add the options to the id cars
+body.forEach((element) => {
+    const option = document.createElement("option")
+    option.value = element.data.id
+    option.text = element.data.attributes.name
+    cars.appendChild(option)
+  })
+
+
+  const makes = document.getElementById("models")
+  const realModel = document.getElementById("model")
+
+  const getMake = async (id) => {
+    const resMake = await fetch(`http://127.0.0.1:5000/carbon_interface/models/${id}`)
+    const makeBody = resMake.json()
+
+    return makeBody
+  }
+
+  cars.addEventListener("change", async (event) => {
+  const value = event.target.value;
+  const makes = await getMake(value)
+  makes.sort((a, b) => {
+    if (a.data.attributes.name < b.data.attributes.name) {
+      return -1
+    }
+    if (a.data.attributes.name > b.data.attributes.name) {
+      return 1
+    }
+    return 0
+  })
+
+  // Remove all existing options from the models select element
+  while (models.firstChild) {
+    models.removeChild(models.firstChild);
+  }
+
+  makes.forEach((element) => {
+    const option = document.createElement("option")
+    option.value = element.data.id
+    option.text = element.data.attributes.name
+    models.appendChild(option)
+  })
+
+})
+
+
+makes.addEventListener("click", (e) => {
+
+const id = e.target.value;
+
+  realModel.value = id;
+})
+
+</script>
+
+<!-- Header -->
+<section class="section_header_carbon_calc">
+  <div class="container">
+      <div class="header_carbon_calc">
+          <div class="box"> 
+              <h1 class="page-title">Carbon Calculator</h1>
+              <p>
+                  To calculate the total emissions produced, users are required to input their details regarding the type of vehicle, fuel, and distance traveled. The carbon calculator will then automatically calculate the total emissions produced.
+              </p>
+              <div class="container_buttons">
+                  <a href="{{ url_for('carbon_calc.carbon_calc_home') }}" class="btn btn_header">Back</a>
+                  <a href="{{ url_for('methodology.methodology_home') }}" class="btn btn_header">Methodology</a>
+                  <a href="{{ url_for('carbon_calc.your_data') }}" class="btn btn_header">Your Emissions</a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="header-wave">
+      <svg class="header-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+          <path class="header-wave-path" d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z"></path>
+      </svg>
+  </div>
+</section>
+
+<section class="section_padding">
+  <h1 class="main-intro-text">New entry: car (specific) <i class="fa-solid fa-car"></i></h1>
+  <section class="new_entry">
+    <div class="container">
+        <div class="box">
+          <form method="POST" action="">
+            {{ form.csrf_token }}
+            <fieldset class="form-group">
+
+              <div class="form-group">
+                <label class="form-control-label" for="car">
+                  Car Makes
+                </label>
+                <select id="cars" class="form-control form-control-lg">
+
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-control-label" for="model">
+                  Car Models
+                </label>
+                <select id="models" class="form-control form-control-lg">
+
+                </select>
+              </div>
+
+
+
+              <div class="form-group">
+                  {{ form.kms.label(class="form-control-label") }}
+                  {% if form.kms.errors %}
+                      {{ form.kms(class="form-control form-control-lg is-invalid") }}
+                      <div class="invalid-feedback">
+                          {% for error in form.kms.errors %}
+                              <span>{{ error }}</span>
+                          {% endfor %}
+                      </div>
+                  {% else %}
+                      {{ form.kms(class="form-control form-control-lg") }}
+                  {% endif %}
+              </div>
+              <div class="form-group" style="display: none;">
+                {{ form.model.label(class="form-control-label") }}
+                {% if form.model.errors %}
+                    {{ form.model(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.model.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.model(class="form-control form-control-lg") }}
+                {% endif %}
+              </div>
+              </fieldset>
+              <div class="container_buttons">
+                {{ form.submit(class="btn btn_header") }}
+                <a href="{{ url_for('carbon_calc.new_entry_car')}}" class="btn btn_header">Or click here for a generic car type</a>
+              </div>
+            </form>
+        </div>
+    </div>
+  </section> 
+      
+{% endblock content %}
