@@ -15,7 +15,7 @@ application.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 # application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # removes error-message
 
 
-DBVAR = f"postgresql://{os.environ['RDS_USERNAME']}:{os.environ['RDS_PASSWORD']}@{os.environ['RDS_HOSTNAME']}/{os.environ['RDS_DB_NAME']}"
+# DBVAR = f"postgresql://{os.environ['RDS_USERNAME']}:{os.environ['RDS_PASSWORD']}@{os.environ['RDS_HOSTNAME']}/{os.environ['RDS_DB_NAME']}"
 DBVAR = 'postgresql://postgres:123456789@awseb-e-2ipvud5qgq-stack-awsebrdsdatabase-ylzlkxcf8cju.cdys4seamvnp.eu-north-1.rds.amazonaws.com:5432/ebdb'
 application.config['SQLALCHEMY_DATABASE_URI'] = DBVAR 
 application.config['SQLALCHEMY_BINDS'] ={'transport': DBVAR}
