@@ -81,7 +81,7 @@ def new_entry_car():
         # kms = request.form['kms']
         # fuel = request.form['fuel_type']
 
-        co2 = (float(kms) * efco2[transport][fuel]) / 4
+        co2 = (float(kms) * efco2[transport][fuel])
 
         co2 = float("{:.2f}".format(co2))
     
