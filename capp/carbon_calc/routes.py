@@ -56,10 +56,8 @@ def new_entry_bus():
         kms = form.kms.data
         fuel = form.fuel_type.data 
         transport = 'Bus'
-        # kms = request.form['kms']
-        # fuel = request.form['fuel_type']
 
-        co2 = (float(kms) * efco2[transport][fuel]) / 70 # Divided by passenger(s)
+        co2 = (float(kms) * efco2[transport][fuel])
 
         co2 = float("{:.2f}".format(co2))
 
@@ -78,8 +76,6 @@ def new_entry_car():
         kms = form.kms.data
         fuel = form.fuel_type.data
         transport = 'Car'
-        # kms = request.form['kms']
-        # fuel = request.form['fuel_type']
 
         co2 = (float(kms) * efco2[transport][fuel])
 
@@ -124,10 +120,8 @@ def new_entry_plane():
         kms = form.kms.data
         fuel = form.fuel_type.data
         transport = 'Plane'
-        # kms = request.form['kms']
-        # fuel = request.form['fuel_type']
 
-        co2 = (float(kms) * efco2[transport][fuel]) / 100 # average amount of passengers (for all types of flights)
+        co2 = (float(kms) * efco2[transport][fuel])
 
         co2 = float("{:.2f}".format(co2))
 
@@ -146,10 +140,8 @@ def new_entry_ferry():
         kms = form.kms.data
         fuel = form.fuel_type.data
         transport = 'Ferry'
-        # kms = request.form['kms']
-        # fuel = request.form['fuel_type']
 
-        co2 = (float(kms) * efco2[transport][fuel]) / 309
+        co2 = (float(kms) * efco2[transport][fuel])
 
         co2 = float("{:.2f}".format(co2))
 
@@ -168,8 +160,6 @@ def new_entry_motorbike():
         kms = form.kms.data
         fuel = form.fuel_type.data
         transport = 'Motorbike'
-        # kms = request.form['kms']
-        # fuel = request.form['fuel_type']
 
         co2 = float(kms) * efco2[transport][fuel]
 
@@ -189,8 +179,6 @@ def new_entry_train():
         kms = form.kms.data
         fuel = form.fuel_type.data
         transport = 'Train'
-        # kms = request.form['kms']
-        # fuel = request.form['fuel_type']
 
         co2 = float(kms) * efco2[transport][fuel]
 
@@ -211,8 +199,6 @@ def new_entry_bicycle():
         kms = form.kms.data
         fuel = form.fuel_type.data
         transport = 'Bicycle'
-        # kms = request.form['kms']
-        # fuel = request.form['fuel_type']
 
         co2 = float(kms) * efco2[transport][fuel]
 
@@ -233,9 +219,7 @@ def new_entry_walk():
         kms = form.kms.data
         fuel = form.fuel_type.data
         transport = 'Walk'
-        # kms = request.form['kms']
-        # fuel = request.form['fuel_type']
-
+        
         co2 = float(kms) * efco2[transport][fuel]
 
         co2 = float("{:.2f}".format(co2))
